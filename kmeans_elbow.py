@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from kneed import KneeLocator
 
-df = pd.read_csv("Mall_Customers.csv")
+df = pd.read_csv("ulabox.csv")
 
-dfp = df[["Annual_Income_(k$)", "Spending_Score"]]
+dfp = df[["weekday", "Baby%"]]
 
 ssd = []
 ks = range(1,11)
@@ -23,6 +23,6 @@ k = round(kneedle.knee)
 
 print(f"Number of clusters suggested by knee method: {k}")
 
-kmeans = KMeans(n_clusters=k).fit(df[["Annual_Income_(k$)", "Spending_Score"]])
-sns.scatterplot(data=df, x="Annual_Income_(k$)", y="Spending_Score", hue=kmeans.labels_)
+kmeans = KMeans(n_clusters=k).fit(df[["weekday", "Baby%"]])
+sns.scatterplot(data=df, x="weekday", y=" Baby%",  hue=kmeans.labels_)
 plt.show()

@@ -7,17 +7,26 @@ from kneed import KneeLocator
 #%%
 df = pd.read_csv("ulabox.csv")
 baby = df[df["Baby%"] > 0]
-#dfp = df[["Annual_Income_(k$)", "Spending_Score"]]
+
 kmeans = KMeans(n_clusters=3).fit(baby[["weekday", "Baby%"]])
 sns.scatterplot(data=baby, x="weekday", y= "Baby%", hue=kmeans.labels_)
 plt.show()
 
 # %%
 df = pd.read_csv("ulabox.csv")
-pet = df[df["Fresh%"] > 0]
-#dfp = df[["Annual_Income_(k$)", "Spending_Score"]]
-kmeans = KMeans(n_clusters=3).fit(pet[["weekday", "Fresh%"]])
-sns.scatterplot(data=pet, x="weekday", y= "Fresh%", hue=kmeans.labels_)
+fresh = df[df["Fresh%"] > 0]
+
+kmeans = KMeans(n_clusters=3).fit(fresh[["weekday", "Fresh%"]])
+sns.scatterplot(data=fresh, x="weekday", y= "Fresh%", hue=kmeans.labels_)
 plt.show()
+
+# %%
+df = pd.read_csv("ulabox.csv")
+total = df[df["total_items"] > 0]
+
+kmeans = KMeans(n_clusters=3).fit(total[["weekday", "total_items"]])
+sns.scatterplot(data=total, x="weekday", y= "total_items", hue=kmeans.labels_)
+plt.show()
+
 
 # %%
